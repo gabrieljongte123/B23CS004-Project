@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slideshow</title>
+  <style>
+    a {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 20px;
+      background-color: rgba(63, 81, 181, 0.8);
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 5px;
+    }
+    a:hover {
+      background-color: rgba(48, 63, 159, 0.9);
+    }
+    body {
+      height: 100vh;
+      width: 100vw;
+      margin: 0;
+      padding: 0;
+      background-image: url("img0.jpg"); 
+      background-size: 50%; /* Adjust the size of the images (50% of the screen) */
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: ease-in 0.7s;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    'use strict';
+    let n = 0;
+    let intervalId;
+
+    const slideshow = function() {
+      intervalId = setInterval(changebgBody, 2000);
+    }
+
+    const changebgBody = function() {
+      document.querySelector('body').style.backgroundImage = `url('img${n}.jpg')`;
+      n = (n + 1) % 3; 
+    }
+
+    slideshow();
+
+    
+    document.querySelector('a').addEventListener('click', function() {
+      clearInterval(intervalId); 
+    });
+  </script>
+
+  <a href="index.html" target="_blank">Go back to main page</a>
+
+</body>
+</html>
+
